@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="">
+        <div class="col-lg-4 mx-auto form-group border rounded mt-5 p-5">
+            
+            <form action="{% url 'login' %}" method="POST">
+                {% csrf_token %} 
+                <h3>Login To Account</h3>
+                {% if error %}
+                    <div class="alert alert-danger" role="alert">
+                        <p class="alert-heading">{{error}}</p>
+                    </div>
+                {% endif %}
+                
+                <label for="username">Username</label>
+                <input type="text" class="form-control" placeholder="Username"name="username" id="username" value={{values.uname}}>
+            
+            
+                <label for="password1">Password</label>
+                <input type="password" class="form-control" placeholder="Password" id="password1" name="password1">
+                <br>
+                <button type="submit" class="btn btn-primary">Login</button>
+                <br>
+
+                <a href="{% url 'signup' %}" >Create An Account</a>
+                
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock  %}
